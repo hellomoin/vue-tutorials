@@ -13,13 +13,13 @@ Clone the repo and then install the server submodule and dependencies.
 ## Build Setup
 
 ``` bash
-#run server. It will run at localhost:3001
-node server/server.js, 
-
 # install dependencies
 npm install
 
-#run server 
+#run server. It will run at localhost:3001
+node server/server.js, 
+
+#run client in another console
 # serve with hot reload at localhost:8080
 npm run dev
 
