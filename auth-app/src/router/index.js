@@ -4,25 +4,37 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Signup from '@/components/Signup'
 import Dashboard from '@/components/Dashboard'
+import auth from '@/auth'
 
 Vue.use(Router)
 
+function requireAuth(to, from, next){
+  if(auth.user.authenticated){
+    next();
+  } else {
+    next({
+      path: '/login'
+    })
+  }
+}
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,
+      beforeEnter: requireAuth
     },
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: Dashboard
-    },
+      component:Dashboard,
+      beforeEnter: requireAuth
+    },   
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component:Login
     },
     {
       path: '/signup',
@@ -31,11 +43,11 @@ export default new Router({
     },
     {
       path: '/logout',
-      redirect: '/login',
-    },
+      redirect: '/login'
+    },   
     {
       path: '*',
-      redirect: '/home',
+      redirect: '/home'
     }
   ]
 })
