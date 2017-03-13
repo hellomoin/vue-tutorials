@@ -6,10 +6,6 @@ This example shows how to do JWT authentication in Vue.js apps. The help is take
 
 Clone the repo and then install the server submodule and dependencies.
 
-# auth-app
-
-> simple auth app example in vuejs followed by 
-
 ## Build Setup
 
 ``` bash
