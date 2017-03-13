@@ -1,15 +1,48 @@
 <template>
-  <div class="login">
-    <h1>{{ msg }}</h1>
+  <div class="col-sm-4 col-sm-offset-4">
+    <h2>Log In</h2>
+    <p>Log in to your account</p>
+    <div class="alert alert-danger" v-if="error">
+        <p>{{ error }}</p>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter your username" v-model="credentials.username">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Enter your password" v-model="credentials.password">
+    </div>
+    <button class="btn btn-primary" @click="submit()">Access</button>
   </div>
 </template>
 
 <script>
+import auth from '@/auth'
+
 export default {
   name: 'Login',
   data () {
     return {
-      msg: 'Login'
+      credentials: {
+        username: '',
+        password: ''
+      },
+      error: ''
+    }
+  },
+  mounted() {    
+    if(auth.checkAuth())
+        {
+        this.$router.push('Dashboard')
+        }
+    },
+  methods: {
+    submit() {
+      var credentials = {
+        username: this.credentials.username,
+        password: this.credentials.password
+      }
+
+    auth.login(this, credentials, 'Dashboard')
     }
   }
 }

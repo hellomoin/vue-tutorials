@@ -13,9 +13,11 @@ Vue.use(VueAxios, axios)
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwt_user_token_id');
 
 /* eslint-disable no-new */
-new Vue({
+const NavApp = new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: { App }
 })
+
+export {NavApp}

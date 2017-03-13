@@ -1,16 +1,22 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <div>Current user token is: {{token}}</div>
   </div>
 </template>
 
 <script>
+import auth from '@/auth'
+
 export default {
-  name: 'Home',
-  data () {
+  name: 'Home',  
+  data (){
     return {
-      msg: 'Welcome to Home'
-    }
+      user: auth.user,
+      token: auth.getAuthHeader()
+      }
+    },
+  mounted() {
+    auth.checkAuth()
   }
 }
 </script>

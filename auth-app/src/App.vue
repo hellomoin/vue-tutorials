@@ -3,14 +3,16 @@
       <nav class="navbar navbar-default">
         <div class="container">
           <ul class="nav navbar-nav">
-            <li>
-              <router-link to="home">Home</router-link>
-            </li>
+            <li><router-link to="home">Home</router-link></li>
+
             <li v-if="!user.authenticated">
                 <router-link to="login">Login</router-link>
             </li>
             <li v-if="!user.authenticated">
                 <router-link to="signup">Sign Up</router-link>
+            </li>
+            <li v-if="user.authenticated">
+                <router-link to="dashboard">Dashboard</router-link>
             </li>
             <li v-if="user.authenticated">
                 <router-link to="logout" v-on:click.native="logout">Logout</router-link>
@@ -24,6 +26,7 @@
   </div>
 </template>
 
+
 <script>
 import auth from '@/auth'
 
@@ -31,12 +34,14 @@ export default {
     name: 'app',
     data(){
         return {
-            user: auth
+            user: auth.user
         }
     },
     methods: {
-      logout() {
-        console.log('logout')
+      logout() {        
+        auth.logout(this)        
+        console.log('logged out and redirecting it to login page now')
+        this.$router.push('/login')
       }
     }
 }
