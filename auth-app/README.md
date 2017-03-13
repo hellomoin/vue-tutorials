@@ -1,3 +1,11 @@
+# Vue.js JWT Authentication
+
+This example shows how to do JWT authentication in Vue.js apps. It uses Auth0's [nodejs-jwt-authentication-sample](https://github.com/auth0/nodejs-jwt-authentication-sample), a NodeJS backend that serves Chuck Norris quotes.
+
+## Installation
+
+Clone the repo and then install the server submodule and dependencies.
+
 # auth-app
 
 > auth tutorial followed by https://github.com/auth0-blog/nodejs-jwt-authentication-sample
@@ -7,6 +15,12 @@
 ``` bash
 # install dependencies
 npm install
+
+Once the application scripts are in place, start the server (which will provide the quotes) using:
+
+```bash
+node server/server.js
+
 
 # serve with hot reload at localhost:8080
 npm run dev
