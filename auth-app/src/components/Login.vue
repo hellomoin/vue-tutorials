@@ -11,7 +11,7 @@
     <div class="form-group">
       <input type="password" class="form-control" placeholder="Enter your password" v-model="credentials.password">
     </div>
-    <button class="btn btn-primary" @click="submit()">Access</button>
+    <button class="btn btn-primary" @click="Login()">Login</button>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
         }
     },
   methods: {
-    submit() {
+    Login() {
       var credentials = {
         username: this.credentials.username,
         password: this.credentials.password

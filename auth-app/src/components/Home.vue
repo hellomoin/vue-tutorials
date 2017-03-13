@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="Home">
     <div>Current user token is: {{token}}</div>
   </div>
 </template>

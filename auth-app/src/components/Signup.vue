@@ -6,12 +6,12 @@
       <p>{{ error }}</p>
     </div>
     <div class="form-group">
-      <input  type="text"  class="form-control" placeholder="Enter your username" v-model="credentials.username">
+      <input type="text"  class="form-control" placeholder="Enter your username" v-model="credentials.username">
     </div>
     <div class="form-group">
       <input type="password" class="form-control" placeholder="Enter your password" v-model="credentials.password">
     </div>
-    <button class="btn btn-primary" @click="submit()">Access</button>
+    <button class="btn btn-primary" @click="Signup()">Signup</button>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
   },
 
   methods: {
-    submit(){
+    Signup(){
      var credentials = {
         username: this.credentials.username,
         password: this.credentials.password
