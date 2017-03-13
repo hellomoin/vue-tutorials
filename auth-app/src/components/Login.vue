@@ -32,7 +32,7 @@ export default {
   mounted() {    
     if(auth.checkAuth())
         {
-        this.$router.push('Dashboard')
+        this.$router.push('Dashboard/posts')
         }
     },
   methods: {
@@ -42,7 +42,7 @@ export default {
         password: this.credentials.password
       }
 
-    auth.login(this, credentials, 'Dashboard')
+    auth.login(this, credentials, 'Dashboard/posts')
     }
   }
 }

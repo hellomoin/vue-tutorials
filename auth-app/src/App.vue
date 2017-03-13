@@ -12,7 +12,7 @@
                 <router-link to="signup">Sign Up</router-link>
             </li>
             <li v-if="user.authenticated">
-                <router-link to="dashboard">Dashboard</router-link>
+                <router-link to="dashboard/posts">Dashboard</router-link>
             </li>
             <li v-if="user.authenticated">
                 <router-link to="logout" v-on:click.native="logout">Logout</router-link>

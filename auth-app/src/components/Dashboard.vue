@@ -1,27 +1,25 @@
 <template>
-  <div class="col-sm-6 col-sm-offset-3">      
-    <h1>Get a Quote!</h1>
-    <button class="btn btn-warning" v-on:click="getQuote()">Get a Quote</button>
-    <div class="quote-area" v-if="quote">
-      <h2><blockquote>{{ quote }}</blockquote></h2>      
+    <div>
+        <div>
+            <router-view></router-view>
+        </div>
+        <quotes> </quotes>
     </div>
-  </div>
 </template>
 
 <script>
-import {NavApp} from '@/main.js'
+import Vue from 'vue'
 import auth from '@/auth'
-
-const API_URL = 'http://localhost:3001/'
-const QUOTE_URL = API_URL + 'api/protected/random-quote'
+import quotes from './quotes'
 
 export default {
     name: 'Dashboard',
     data () {
     return {
-        quote: '',
-        token: auth.getAuthHeader()
         }
+    },
+    components:{
+        quotes
     },
     mounted(){
         if(!auth.checkAuth())
@@ -30,12 +28,6 @@ export default {
             }
     },
     methods: {
-        getQuote(){
-            NavApp.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwt_user_token_id');
-            NavApp.axios.get(QUOTE_URL).then((response)=>{
-                this.quote = response.data
-            }).catch((error) => console.log(error))
         }
-    }
 }
 </script>
