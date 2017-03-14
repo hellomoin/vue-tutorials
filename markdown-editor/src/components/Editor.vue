@@ -9,7 +9,7 @@ export default {
   name: 'editor',
   data () {
     return {
-      rawMarkdown: 'Welcome to Your Vue.js App'
+      rawMarkdown: ''
     }
   },
   methods:{
@@ -22,7 +22,7 @@ export default {
 
 <style>
 #editor {
-    height: 500px;
+    height: 300px;
     max-height: 500px;
     margin-bottom: 20px;
     margin-top: 20px;
