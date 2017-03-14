@@ -8,7 +8,7 @@
       </div>  
     <div class="row">
       <Editor v-on:inputSent="InputReceived"></Editor>
-      <Preview v-bind:previewData="rawData"></Preview>
+      <Preview v-bind:previewData="rawDataToPreview"></Preview>
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -29,7 +29,7 @@ export default {
   },
   data(){
     return {
-      rawData: 'just to test',
+      rawDataToPreview: '',
       rawMarkdown: ''
     }
   },
@@ -39,8 +39,13 @@ export default {
       this.rawMarkdown = rawMarkdown
       },
     renderPreview(){
-      this.rawData = this.rawMarkdown
-      console.log(this.rawMarkdown)
+        var data = {text: this.rawMarkdown, mode: 'gfm'}
+        this.axios.post('https://api.github.com/markdown', data).then((response)=> {
+        this.rawDataToPreview = response.data
+        console.log(this.rawDataToPreview)
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 }
